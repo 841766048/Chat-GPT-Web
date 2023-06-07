@@ -1,3 +1,10 @@
+/*
+ * @Author       : 许七安
+ * @Date         : 2023-06-07 02:26:05
+ * @LastEditors  : hyman
+ * @LastEditTime : 2023-06-07 15:11:37
+ * @Description  : 请填写简介
+ */
 import { NextRequest, NextResponse } from "next/server";
 
 export const OPENAI_URL = "api.openai.com";
@@ -35,7 +42,9 @@ export async function requestOpenai(req: NextRequest) {
   const fetchOptions: RequestInit = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: authValue,
+      "api-key": `${process.env.OPENAI_API_KEY}`
+      // Authorization: authValue,
+      // Authorization: authValue,
       ...(process.env.OPENAI_ORG_ID && {
         "OpenAI-Organization": process.env.OPENAI_ORG_ID,
       }),
